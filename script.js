@@ -23,6 +23,7 @@ loadRecipe();
 function getOne(){
     console.log("abc");
     $("#getIdModal").modal("hide");
+    $("#idbox").val("");
     $("#recipes").html(`<div class="hg d-flex justify-content-center">
     <div class="spinner-border text-dark" role="status">
     </div>
