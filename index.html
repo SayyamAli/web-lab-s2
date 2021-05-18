@@ -25,7 +25,7 @@
             <div class="d-flex">
                 <button id="getAll" class="btn btn-info mb-3 mt-3 mr-3"><i class="fa fa-cloud-get" aria-hidden="true"></i> Get All
                     product</button>
-                    <button id="getOne" class="btn btn-info mb-3 mt-3 mr-3" data-toggle="modal" data-target="#addModal"><i class="fa fa-cloud-get" aria-hidden="true"></i> Get by id
+                    <button id="getOne" class="btn btn-info mb-3 mt-3 mr-3" data-toggle="modal" data-target="#getIdModal"><i class="fa fa-cloud-get" aria-hidden="true"></i> Get by id
                         </button> 
                     <button id="addRes" class="btn btn-info mb-3 mt-3" data-toggle="modal" data-target="#addModal"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Create
                         product</button></div>
@@ -106,6 +106,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -151,6 +152,39 @@
                         </button>
                     </div>
                 </div>
+            </div>
+        </div>
+
+            <div class="modal fade" id="getIdModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Get Product By id</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="updateId" /> <br />
+                        <div class="form-group">
+                            <label for="updateTitle">ID</label>
+                            <input type="text" class="form-control" name="updateName" id="idbox"
+                                aria-describedby="ID" placeholder="Enter id" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="getOneId" class="btn btn-primary">Get</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+           
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                 <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->

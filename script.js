@@ -6,16 +6,77 @@ $(function () {
     $("#addBtn").click(addRecipe);
     $("#updateSave").click(saveUpdate);
     $("#getAll").click(getAll);
+    $("#getOneId").click(getOne);
     
 });
 function getAll(){
     console.log("abc");
+
     $("#recipes").html(`<div class="hg d-flex justify-content-center">
     <div class="spinner-border text-dark" role="status">
     </div>
 </div>`);
 loadRecipe();
 }
+
+
+function getOne(){
+    console.log("abc");
+    $("#getIdModal").modal("hide");
+    $("#recipes").html(`<div class="hg d-flex justify-content-center">
+    <div class="spinner-border text-dark" role="status">
+    </div>
+</div>`);
+var id = $("#idbox").val();
+console.log(id);
+$.ajax({
+    url: "https://usman-recipes.herokuapp.com/api/products/"+id,
+    method: "GET",
+    success: function (res) {
+        console.log("ccc");
+        var recipes = $("#recipes");
+        recipes.empty();
+        recipes.addClass("cent p-3 m-2 ");
+        recipes.append(
+                `<div id="abc" class="card deco ml-4 mb-4" style="max-width: 20rem;">
+                <h3>${res.name}</h3>
+                <div class="card-body text-primary">
+                    <p class="card-text">${res.description}</p>
+                    <div class="row pt-3 pb-2 m-2 bbb ">
+                      <div class="col-sm  hh">
+                        Price
+                      </div>
+                      <div class="col-sm bd hh">
+                        Color
+                      </div>
+                      <div class="col-sm  hh">
+                        Department
+                      </div>
+                    </div>
+                    <div class="row p-1 m-2 ">
+                        <div class="col-sm  nu">
+                        RS. ${res.price}
+                        </div>
+                        <div class="col-sm  nu">
+                        ${res.color}
+                        </div>
+                        <div class="col-sm  nu">
+                        ${res.department}
+                        </div>
+                      </div>
+                </div>
+                <div class="ft "data-id="${res._id}">
+                <button id="edit"  class="btn btn-warning btn-sm float-left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update</button>
+                <button id="del"  class="btn btn-danger btn-sm float-left"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                </div>
+              </div>`
+            );
+    }
+
+});
+}
+
+
 function loadRecipe() {
     $.ajax({
         url: "https://usman-recipes.herokuapp.com/api/products",
