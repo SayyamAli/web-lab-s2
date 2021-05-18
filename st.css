@@ -1,0 +1,65 @@
+* {
+  font-family: "Libre Franklin", sans-serif;
+}
+.deco {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  min-width: 20rem;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.hg {
+  width: 100vw;
+  height: 76vh;
+  align-items: center;
+}
+footer {
+  font-size: larger;
+  font-weight: bolder;
+  font-style: italic;
+  text-align: center;
+}
+
+p {
+  font-size: 11px;
+  color: #878787;
+  line-height: 22px;
+  text-align: center;
+}
+h3 {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin-top: 35px;
+  color: #ea1d24;
+  text-align: center;
+  font-weight: bolder;
+}
+.bd {
+  text-align: center;
+}
+
+.hh {
+  font-size: 14px;
+  color: #757575;
+  font-weight: bolder;
+}
+.bbb {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.ft {
+  padding: 0.75rem 1.25rem;
+}
+.nu {
+  font-size: 11px;
+  color: #757575;
+}
+.cent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+}

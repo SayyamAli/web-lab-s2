@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> LAb-S2</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="st.css">
+</head>
+
+<body>
+    <!-- nav bar start -->
+    <nav class="navbar  p-3 bbb ">
+            <a class="navbar-brand">
+                <h2>Product Api</h2>
+            </a>
+            <div class="d-flex">
+                <button id="getAll" class="btn btn-info mb-3 mt-3 mr-3"><i class="fa fa-cloud-get" aria-hidden="true"></i> Get All
+                    product</button>
+                    <button id="getOne" class="btn btn-info mb-3 mt-3 mr-3" data-toggle="modal" data-target="#addModal"><i class="fa fa-cloud-get" aria-hidden="true"></i> Get by id
+                        </button> 
+                    <button id="addRes" class="btn btn-info mb-3 mt-3" data-toggle="modal" data-target="#addModal"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Create
+                        product</button></div>
+                    
+    </nav>
+    <!-- navbar end -->
+    <div class="container-fluid ">
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add New Product</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="title">Name</label>
+                            <input type="text" class="form-control" name="title" id="name" aria-describedby="titleHelp"
+                                placeholder="Name of Product" />
+                            <small id="titleHelp" class="form-text text-muted">Enter Name of the Product</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="body">Price</label>
+                            <input type="text" class="form-control" name="price" id="price" aria-describedby="bodyHelp"
+                                placeholder="Product Price" />
+                            <small id="bodyHelp" class="form-text text-muted">Enter Price</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="body">Color</label>
+                            <input type="text" class="form-control" name="color" id="color" aria-describedby="bodyHelp"
+                                placeholder="Product color" />
+                            <small id="bodyHelp" class="form-text text-muted">Enter Product Color</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="body">Department</label>
+                            <input type="text" class="form-control" name="dept" id="department"
+                                aria-describedby="bodyHelp" placeholder="Department" />
+                            <small id="bodyHelp" class="form-text text-muted">Enter Department of Product</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="body">Description</label>
+                                <textarea class="form-control" name="details" id="description"
+                                rows="3"></textarea>
+                            <small id="bodyHelp" class="form-text text-muted">Enter Details of Product</small>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="addBtn" class="btn btn-info">Add Product</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="recipes" class="cent p-3 m-2">
+            <div class="hg d-flex justify-content-center">
+                <div class="spinner-border text-dark" role="status">
+                </div>
+            </div>
+        </div>
+        <footer> Fake-API Fa18-bcs-030</footer>
+        <div id="alert" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-success">Success</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="msg">Recipe deleted</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Update Record</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="updateId" /> <br />
+                        <div class="form-group">
+                            <label for="updateTitle">Title</label>
+                            <input type="text" class="form-control" name="updateName" id="updateName"
+                                aria-describedby="updateHelpId" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="updateBody">Price</label>
+                            <input type="text" class="form-control" name="updatePrice" id="updatePrice"
+                                aria-describedby="updateHelpId" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="updateBody">Color</label>
+                            <input type="text" class="form-control" name="updateColor" id="updateColor"
+                                aria-describedby="updateHelpId" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="updateBody">department</label>
+                            <input type="text" class="form-control" name="updateDept" id="updateDepartment"
+                                aria-describedby="updateHelpId" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="updateBody">Description</label>
+                            <textarea class="form-control" name="updateDetails" id="updateDescription"
+                                rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="updateSave" class="btn btn-primary">Update</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                    crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                    crossorigin="anonymous"></script>
+                <script src="script.js"></script>
+
+</body>
+
+</html>
